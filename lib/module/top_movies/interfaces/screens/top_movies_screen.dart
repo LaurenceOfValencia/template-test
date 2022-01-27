@@ -87,23 +87,6 @@ class _TopMoviesScreenState extends State<TopMoviesScreen> {
                         ),
                       ],
                     ),
-
-                    //  RichText(
-                    //   text: TextSpan(
-                    //       style: _theme.textTheme.bodyText2
-                    //           ?.copyWith(color: Colors.white),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: state.movies[index].crew,
-                    //         ),
-                    //         const WidgetSpan(
-                    //           child: Padding(
-                    //             padding: EdgeInsets.symmetric(horizontal: 1),
-                    //             child: Icon(Icons.star_border),
-                    //           ),
-                    //         )
-                    //       ]),
-                    // ),
                   );
                 },
               );
