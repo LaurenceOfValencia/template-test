@@ -34,16 +34,76 @@ class _TopMoviesScreenState extends State<TopMoviesScreen> {
                 itemCount: state.movies.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
+                    isThreeLine: true,
+                    leading: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxWidth: 70,
+                        maxHeight: 90,
+                      ),
+                      child: Image.network(state.movies[index].image),
+                    ),
                     title: Text(
-                      state.movies[index].title,
+                      state.movies[index].rank +
+                          ". " +
+                          state.movies[index].title +
+                          " (" +
+                          state.movies[index].year +
+                          ")",
                       style: _theme.textTheme.bodyText2
                           ?.copyWith(color: Colors.white),
                     ),
-                    subtitle: Text(
-                      state.movies[index].crew,
-                      style: _theme.textTheme.bodyText2
-                          ?.copyWith(color: Colors.white),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                state.movies[index].crew,
+                                style: _theme.textTheme.bodyText2
+                                    ?.copyWith(color: Colors.white),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 2),
+                              child: Icon(
+                                Icons.star,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              state.movies[index].imDbRating,
+                              style: _theme.textTheme.bodyText2
+                                  ?.copyWith(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
+
+                    //  RichText(
+                    //   text: TextSpan(
+                    //       style: _theme.textTheme.bodyText2
+                    //           ?.copyWith(color: Colors.white),
+                    //       children: [
+                    //         TextSpan(
+                    //           text: state.movies[index].crew,
+                    //         ),
+                    //         const WidgetSpan(
+                    //           child: Padding(
+                    //             padding: EdgeInsets.symmetric(horizontal: 1),
+                    //             child: Icon(Icons.star_border),
+                    //           ),
+                    //         )
+                    //       ]),
+                    // ),
                   );
                 },
               );
